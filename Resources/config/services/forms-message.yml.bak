@@ -11,8 +11,6 @@ services:
         class: %ccdn_message_message.form.type.message.class%
         arguments:
             - %ccdn_message_message.entity.message.class%
-            - @doctrine.orm.entity_manager
-            - %ccdn_message_message.entity.user.class%
 
     ccdn_message_message.form.handler.message:
         class: %ccdn_message_message.form.handler.message.class%

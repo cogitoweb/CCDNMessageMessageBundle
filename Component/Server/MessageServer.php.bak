@@ -247,9 +247,23 @@ class MessageServer
      */
     public function getRecipients(Message $message)
     {
-        $recipients = explode(',',$message->getSendTo());
+        $recipients = $message->getSendTo();
 
-        $users = $this->userModel->findTheseUsersByUsername($recipients);
+        // build a list of recipients from the sendTo field.
+        if ($recipients = preg_split('/((,)|(\s))/', $recipients, PREG_OFFSET_CAPTURE)) {
+            foreach ($recipients as $key => $recipient) {
+                $recipients[$key] = preg_replace("/[^a-zA-Z0-9_]/", "", $recipients[$key]);
+
+                if (! $recipient) {
+                    unset($recipients[$key]);
+                }
+            }
+
+            $users = $this->userModel->findTheseUsersByUsername($recipients);
+        } else {
+            // If preg split fails, then presumably theres no comma delimiter, so only one user.
+            $users = $this->userModel->findTheseUsersByUsername(array($recipients));
+        }
 
         return $users;
     }

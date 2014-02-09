@@ -36,19 +36,15 @@ class MessageFormType extends AbstractType
      * @var string $messageClass
      */
     protected $messageClass;
-    protected $doctrine;
-    protected $userClass;
 
     /**
      *
      * @access public
      * @var string $messageClass
      */
-    public function __construct($messageClass, $doctrine, $userClass)
+    public function __construct($messageClass)
     {
         $this->messageClass = $messageClass;
-        $this->doctrine = $doctrine;
-        $this->userClass = $userClass;
     }
 
     /**
@@ -58,20 +54,10 @@ class MessageFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // doctrine model (hardcoded class)
-        
-        $users = $this->doctrine->getRepository($this->userClass)->createQueryBuilder('u')
-                              ->orderBy('u.username', 'ASC')->getQuery()->getArrayResult();
-        
-        $out = array();
-        foreach($users as $u) $out[$u['username']] = $u['username'];
-        
         $builder
-            ->add('send_to', 'choice', 
-                    array('choices' => $out,
-                        'multiple' => true,
-                        'empty_value' => true,
-                    'data'               => array($options['send_to']),
+            ->add('send_to', 'text',
+                array(
+                    'data'               => $options['send_to'],
                     'label'              => 'form.label.to',
                     'translation_domain' => 'CCDNMessageMessageBundle',
                 )

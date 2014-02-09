@@ -63,8 +63,22 @@ class SendToValidator extends ConstraintValidator
 
             return;
         }
-        
-        return true;
+
+        $recipients = $this->getRecipients($value);
+
+        if (count($recipients) > 0) {
+            $usersFound = $this->userModel->findTheseUsersByUsername($recipients);
+        } else {
+            $this->context->addViolation($constraint->message, array('%username%' => $value));
+
+            return;
+        }
+
+        foreach ($recipients as $recipient) {
+            if (! $this->recipientExists($recipient, $usersFound)) {
+                $this->context->addViolation($constraint->message, array('%username%' => $recipient));
+            }
+        }
     }
 
     /**

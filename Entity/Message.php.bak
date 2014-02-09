@@ -81,8 +81,6 @@ class Message extends MessageModel
      */
     public function setSendTo($sendTo)
     {
-        if(is_array($sendTo)) $sendTo = implode (',', $sendTo);
-        
         $this->sendTo = $sendTo;
 
         return $this;
