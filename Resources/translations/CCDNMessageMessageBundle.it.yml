@@ -1,0 +1,85 @@
+dashboard:
+    pages:
+        account:             "Account"
+    categories:
+        account:             "Account"
+
+title:
+    folder:
+        index:               "In Arrivo"
+        show:                "Messaggi - %folderName%"
+    message:
+        show:                "Messaggio: %message_subject%"
+        compose:             "Scrivi"
+
+crumbs:
+    user:
+        message:
+            compose:
+                new:         "Scrivi"
+                reply:       "Rispondi"
+                forward:     "Inoltra"
+
+sidebar:
+    header:
+        tools:               "Strumenti"
+        folders:             "Cartelle"
+
+link:
+    message:
+        messages:            "Messaggi"
+        compose:             "Scrivi"
+        reply:               "Rispondi"
+        forward:             "Inoltra"
+        delete:              "Elimina"
+        mark_as_read:        "Segna come letto"
+        mark_as_unread:      "Segna come da leggere"
+        move_to:             "Sposta in"
+        send_draft:          "Invia"
+        select_none:         "Tutti"
+        select_all:          "Nessuno"
+        select_all_read:     "Letto"
+        select_all_unread:   "Non letto"
+        select_all_flagged:  "Marcato"
+        select_all_attached: "Allegato"
+        select_all_draft:    "Bozza"
+
+form:
+    required:                "Campo obbligatorio"
+    label:
+        to:                  "A"
+        subject:             "Oggetto"
+        body:                "Messaggio"
+        flagged:             "Marca come importante"
+    button:
+        send:                "Invia"
+        preview:             "Anteprima"
+        save_draft:          "Salva bozza"
+        cancel:              "Elimina"
+
+message:
+    sent-from-label:         "Da: "
+    send-to-label:           "A: "
+    subject-label:           "Oggetto: "
+    sent-datetime-label:     "Inviato il: "
+
+generic:
+    thead:
+        from:                "Da"
+        to:                  "A"
+        subject:             "Oggetto"
+        sent:                "Inviato"
+    message:
+        inbox_status:        "Hai %message_count% messaggi"
+        none:                "Non hai messaggi in questa cartella."
+
+flash:
+    success:
+        message:
+            sent:            "Messaggio inviato a %user%."
+        draft:
+            saved:           "Bozza salvata."
+    error:
+        message:
+            inbox_full:      "La casella di posta di %user% è piena e non può ricevere il tuo messaggio."
+            flood_control:   "Controllo di flusso - Rilevata frequanza di invio elevata. Attendere prima di effettuare un nuovo tentativo."
